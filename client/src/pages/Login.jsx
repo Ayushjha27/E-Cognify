@@ -34,6 +34,12 @@ const Login = () => {
     }
   };
 
+  const handleRegistration = (type) => {
+
+    const inputData = type === "signup" ? signupInput : loginInput;
+    console.log(inputData);
+  }
+
   return (
     <div className="flex items-center w-full justify-center">
       <Tabs defaultValue="account" className="w-[400px]">
@@ -87,7 +93,8 @@ const Login = () => {
               </div>
             </CardContent>
             <CardFooter>
-              <Button>Signup</Button>
+
+              <Button onClick={() => handleRegistration("signup")}>Signup</Button>
             </CardFooter>
           </Card>
         </TabsContent>
@@ -105,8 +112,8 @@ const Login = () => {
                 <Input
                   type="email"
                   name="email"
-                  value={signupInput.email}
-                  onchange={(e) => changeInputHandler(e, "login")}
+                  value={loginInput.email}
+                  onChange={(e) => changeInputHandler(e, "login")}
                   placeholder="ex- Shruti1627@gmail.com"
                   required="true"
                 />
@@ -116,15 +123,15 @@ const Login = () => {
                 <Input
                   type="password"
                   name="password"
-                  value={signupInput.password}
-                  onchange={(e) => changeInputHandler(e, "login")}
+                  value={loginInput.password}
+                  onChange={(e) => changeInputHandler(e, "login")}
                   placeholder="ex- Hao"
                   required="true"
                 />
               </div>
             </CardContent>
             <CardFooter>
-              <Button>Login</Button>
+              <Button onClick={() => handleRegistration("login")}>Login</Button>
             </CardFooter>
           </Card>
         </TabsContent>
