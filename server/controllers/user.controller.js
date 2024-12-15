@@ -1,5 +1,6 @@
-import User from "../models/user.model.js"
-import bcrypt from "bcryptjs"
+import {User} from "../models/user.model.js";
+import bcrypt from "bcryptjs";
+import { generateToken } from "../utils/generateToken.js";
 
 export const register = async (req, res) => {
     try {
@@ -15,7 +16,7 @@ export const register = async (req, res) => {
 
         if (user) {
             return res.status(400).json({
-                success: false,
+                success:false,
                 message: "User already exist with this email."
             })
         }
@@ -34,6 +35,7 @@ export const register = async (req, res) => {
 
     }
     catch (error) {
+        console.log(error);
         return res.status(500).json({
             success: false,
             message: "Failed to register."
@@ -70,7 +72,7 @@ export const login = async (req, res) => {
             });
         }
 
-        generateToken(res, user, `Welcome back ${user.name}`)
+        generateToken(res, user, `Welcome back ${user.name}`);
 
     }
     catch (error) {
