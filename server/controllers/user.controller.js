@@ -70,8 +70,7 @@ export const login = async (req, res) => {
             });
         }
 
-        
-
+        generateToken(res, user, `Welcome back ${user.name}`)
 
     }
     catch (error) {
