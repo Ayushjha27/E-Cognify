@@ -5,6 +5,7 @@ import { generateToken } from "../utils/generateToken.js";
 export const register = async (req, res) => {
     try {
         const { name, email, password } = req.body;
+        // console.log(req.body);
         if (!name || !email || !password) {
             //HTTP 400 Bad Request
             return res.status(400).json({
